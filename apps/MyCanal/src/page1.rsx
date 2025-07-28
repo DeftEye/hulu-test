@@ -17,6 +17,19 @@
     type="main"
   >
     <Text id="text1" value="GitFlow Test" verticalAlign="center" />
-    <Button id="button1" text="Hello" />
+    <Button id="button1" text="Hello">
+      <Event
+        event="click"
+        method="openPage"
+        params={{
+          options: { map: { passDataWith: "urlParams" } },
+          pageName: "page2",
+        }}
+        pluginId=""
+        type="util"
+        waitMs="0"
+        waitType="debounce"
+      />
+    </Button>
   </Frame>
 </Screen>
