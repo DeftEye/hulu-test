@@ -1,0 +1,33 @@
+name: Auto PR to Main
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if PR exists
+        id: check-pr
+        run: |
+          pr_exists=$(gh pr list --base main --head develop --json number --jq length)
+          echo "pr_exists=$pr_exists" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create PR if none exists
+        if: steps.check-pr.outputs.pr_exists == '0'
+        run: |
+          gh pr create \
+            --base main \
+            --head develop \
+            --title "Auto PR: Sync develop → main" \
+            --body "Automated pull request to sync develop branch to main."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
