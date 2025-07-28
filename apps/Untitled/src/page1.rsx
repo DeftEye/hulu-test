@@ -15,5 +15,7 @@
     isHiddenOnMobile={false}
     padding="8px 12px"
     type="main"
-  />
+  >
+    <Text id="text1" value="GitFlow Test" verticalAlign="center" />
+  </Frame>
 </Screen>
