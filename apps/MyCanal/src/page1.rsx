@@ -17,5 +17,6 @@
     type="main"
   >
     <Text id="text1" value="GitFlow Test" verticalAlign="center" />
+    <Button id="button1" text="Hello" />
   </Frame>
 </Screen>
