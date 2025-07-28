@@ -82,7 +82,7 @@ return data"
           <Text
             id="FormTitle"
             marginType="normal"
-            value=" ### Log in"
+            value=" ### Log in Now"
             verticalAlign="center"
           />
           <Button
